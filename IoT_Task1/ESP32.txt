@@ -1,0 +1,53 @@
+ESP32 (small micro controller)
+
+
+------------------Features------------------- 
+
+1- It`s 10 times faster than arduino
+2- 32-bit
+3- integrated wifi and Bluetooth.
+4- has multiple I/O pins with multifunciton
+5- small
+
+
+
+--------------Set up Environment--------------
+
+1- Download Arduino IDE from this website.
+https://www.arduino.cc/en/software
+
+
+2- Install ESP32 to Arduino
+-First: go to File > Prefernces
+Copy this below URL to (Additional Board Manager URLs) Feild and Click ok.
+https://dl.espressif.com/dl/package_esp32_index.json
+
+-Then: go to Tools > Board "Arduino Uno" > Boards Manager
+search for ESP32 and install.
+
+
+3- Plug the ESP32 to the computer.
+
+
+4- Select the board go to Tools > Board "Arduino Uno" > ESP32 Arduino > WEMOS D1 MINI ESP32.
+
+
+5- Select the port COM3 (if itsn`t found download CP2104 driver and update driver).
+
+
+6- Now, it`s ready to write you code. 
+
+
+
+------------------Testing-------------------
+
+you can use one of built-in examples code by:
+go to File > example > basics > blink.
+
+this will turn the light on and off and controll the delay.
+
+
+
+
+
+

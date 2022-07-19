@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text</title>
+    <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet">
+    </link>
+    <style>
+        body {
+            font-family: 'Tajawal';
+            text-align: center;
+        }
+
+        p {
+            background-color: #f1f1f1;
+            margin: 20px;
+            padding: 20px;
+            height: 200px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #292345;
+            color: #FFFFFF;
+            border: 0px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+            width: 30%;
+            font-size: 18px;
+            font-family: 'Tajawal';
+        }
+
+        img {
+            width: 40%;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>تحويل الصوت إلى نص</h2>
+    <p>هنا سيظهر النص</p>
+    <button>ابدأ</button>
+    <br>
+    <img src="robot.gif">
+
+    <script>
+        window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'ar';
+        recognition.interimResults = true;
+
+        startButton = document.querySelector('button');        
+
+        startButton.addEventListener('click', function () {
+            try {
+                recognition.start();
+            } catch (error) {
+                console.log("It`s recording now") // if click while it`s working
+            }
+        });
+
+        recognition.onstart = function () {
+            startButton.style.backgroundColor = '#8ad1c0'; //'#9e77b5';
+            startButton.innerHTML = 'تحدث';
+        };
+
+        recognition.onspeechend = function () {
+            startButton.style.backgroundColor = '#292345';
+            startButton.innerHTML = 'أبدأ';
+            recognition.stop();
+        };
+
+        recognition.onresult = function (event) {            
+            const speechToText = event.results[0][0].transcript;
+            document.querySelector('p').innerHTML = speechToText;
+        };   
+    </script>
+</body>
+
+</html>
