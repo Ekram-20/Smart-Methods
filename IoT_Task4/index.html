@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robaot Controll</title>
+    <link href="https://fonts.googleapis.com/css?family=Tajawal&amp;display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Tajawal';
+            text-align: center;
+        }
+
+        button {
+            background-color: #292345;
+            color: #FFFFFF;
+            border: 0px;
+            cursor: pointer;
+            border-radius: 50px;
+            margin: 10px;
+            width: 80px;
+            height: 80px;
+            font-size: 20px;
+            font-family: 'Tajawal';
+            text-align: center;
+        }
+
+        #stop {
+            background-color: #8ad1c0;
+        }
+
+        img {
+            width: 40%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>!!! تحرك أيها الربوت</h1>
+    <form action='/' method="GET">
+        <button id="forward">أمام</button>
+        <div>
+            <button id="left">يسار</button>
+            <button id="stop">توقف</button>
+            <button id="right">يمين</button>
+        </div>
+        <button id="backward">خلف</button>        
+    </form>
+    <br>
+    <img src="robot.gif">
+
+    <script>
+
+        function sendRequest(moveType) {
+            alert('The robot moves' + moveType)
+
+            http = new XMLHttpRequest();
+            http.open("GET", "http://localhost:8000/" + moveType);
+            http.load = function () {
+                console.log(this.reponseText);
+            }
+            http.send();
+        }
+
+        document.getElementById("left").addEventListener('click', () => { sendRequest('left') });
+        document.getElementById("right").addEventListener('click', () => { sendRequest('right') });
+        document.getElementById("stop").addEventListener('click', () => { sendRequest('stop') });
+        document.getElementById("backward").addEventListener('click', () => { sendRequest('backward') });
+        document.getElementById("forward").addEventListener('click', () => { sendRequest('forward') });
+
+    </script>
+</body>
+
+</html>
