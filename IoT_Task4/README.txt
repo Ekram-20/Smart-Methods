@@ -21,9 +21,6 @@ How it will work:
 after you run the server, you can press on any button direcion you want to make robot move. you will alert you with the type of movement.
 
 
-Resourses: 
-
-
 
 Made by: 
 Ekram Feras for Smart Method Task 4 in August 2022.
